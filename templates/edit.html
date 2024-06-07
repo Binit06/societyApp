@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Charge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .close {
+            cursor: pointer;
+        }
+
+        .cost {
+            font-size: 16px;
+        }
+
+        .content {
+            width: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .namemain {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 30px;
+            background-color: rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: .2s;
+        }
+        .namemain:hover {
+            background-color: rgba(0,0,0,.3);
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="namemain">
+                <span class="close"><</span>
+                <span class="name">{{ charges.name  }}</span>
+            </div>
+            <span class="cost">independent charges only</span>
+        </div>
+        <div> Initialization Query </div>
+        <div class="content">
+            <input type="text" id="chargeInput" value="{{ charges.initialquery }}">
+            <button id="updateButton">Update Query</button>
+        </div>
+        <div> Conditional Query </div>
+        <div class="content">
+            <input type="text" id="chargeInput" value="{{ charges.conditionalquery }}">
+            <button id="updateButton">Update Query</button>
+        </div>
+        <div> Verfication Query </div>
+        <div class="content">
+            <input type="text" id="chargeInput" value="{{ charges.verificationquery }}">
+            <button id="updateButton">Update Query</button>
+        </div>
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

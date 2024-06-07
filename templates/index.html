@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charges</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Charges and Costs</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Initial Query</th>
+            <th>Cost</th>
+            <th>Edit</th>
+        </tr>
+        {% for charge in charges %}
+        <tr>
+            <td>{{ charge.id }}</td>
+            <td>{{ charge.name }}</td>
+            <td>{{ charge.initial_query }}</td>
+            <td>{{ charge.charges_cost }}</td>
+            <td><form action="{{ url_for('editCharge', id=charge.id) }}" method="GET"><button type="submit">Edit</button></form></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script>
+        document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id')
+                const name = this.getAttribute('data-name')
+                const initialQuery = this.getAttribute('data-initial-query')
+                const cost = this.getAttribute('data-cost')
+
+                const data = {
+                    id: id,
+                    name: name,
+                    initial_query: initialQuery,
+                    cost: cost,
+                }
+
+                fetch(`/charges/edit/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'aaplication/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Data Sent Succesfully')
+                    } else {
+                        console.error('Failed To Send Data')
+                    }
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                })
+            })
+        });
+    </script>
+</body>
+</html>
+
