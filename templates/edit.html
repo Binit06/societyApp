@@ -90,10 +90,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="namemain">
-                <span class="close"><</span>
-                <span class="name">{{ charges.name  }}</span>
-            </div>
+            <button class="namemain">
+                <span class="name">{{ charges.name }}</span>
+            </button>
             <span class="cost">independent charges only</span>
         </div>
         <div> Initialization Query </div>
@@ -114,6 +113,10 @@
 
 
     </div>
-    <script src="script.js"></script>
+    <script src="script.js">
+        document.getElementbyId("namemain").addEventListener("click", function() {
+            window.history.back();
+        });
+    </script>
 </body>
 </html>
